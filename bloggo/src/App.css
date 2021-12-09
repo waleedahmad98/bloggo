@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "open-s-med";
+  src: url("../src/assets/fonts/OpenSauceSans-Medium.ttf");
+}
+
+@font-face {
+  font-family: "open-s-bol";
+  src: url("../src/assets/fonts/OpenSauceSans-Bold.ttf");
+}
+
+body, html {
+  background-image: url("./assets/imgs/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  font-family: "open-s-med";
+}
+
+#root{
+  height: 100%;
+}
+
+.credential-container{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 0px 25px 25px 0px;
+}
+
+.greeting-title{
+  color: white;
+  padding: 20%;
+  font-family: "open-s-bol";
+  font-size: 7rem;
+}
+
+.credentials-title{
+  font-family: "open-s-bol";
+  font-size: 4rem;
+}
+
+.nav-tab{
+  font-family: "open-s-bol";
+  font-size: 2rem;
+}
+
+.register-link{
+  color: rgb(117, 117, 117);
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 0.25rem;
+}
+
+.active{
+  color: black;
+  text-decoration: none;
+  
+}
+
+.login-link{
+  color: rgb(117, 117, 117);
+  text-decoration: none;
+  margin-left: 2%;
+  cursor: pointer;
+}
+
+.login-link :active{
+  color: black;
+  text-decoration: none;
+  margin-left: 2%;
+}
+
+.credentialform{
+  font-family: "open-s-med";
+  width:70%;
+  margin-left: 3.25rem; 
+}
+
+.form-control{
+  border-radius: 15px !important;
+  padding: 1rem !important;
+}
+
+.form-label{
+  font-size: 1.5rem;
+}
+
+.credentialform .btn{
+  padding: 1rem;
+  background-color: #001415;
+  border-radius: 15px;
+  width: 30%;
+  font-family: "open-s-bol" !important;
+  color: white !important;
+}
