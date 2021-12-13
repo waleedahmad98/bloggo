@@ -2,6 +2,7 @@ import connectDB from './db/db.js';
 import express from 'express';
 import cors from 'cors';
 import {createUser, matchUserPassword} from './controllers/users.controller.js';
+import {createPost, getPosts} from './controllers/posts.controller.js';
 import {SECRET_KEY} from './db/dbconfig.js';
 import jwt from 'jsonwebtoken';
 
@@ -29,6 +30,16 @@ app.post('/login', async function (req, res) {
   stat.accessToken = jwt.sign(req.body.email, SECRET_KEY);
   res.send(stat);
 
+});
+
+app.post('/create', async function (req, res) {
+  let stat = await createPost(req.body.title, req.body.desc, req.body.body, req.body.img, req.body.author);
+  res.send(stat);
+});
+
+app.get("/findAll", async function (req, res) {
+  let stat = await getPosts();
+  res.send(stat);
 });
 
 app.listen(8000, function () {

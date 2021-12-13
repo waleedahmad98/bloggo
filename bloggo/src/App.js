@@ -9,13 +9,13 @@ import "bootstrap/dist/js/bootstrap.bundle";
 function App() {
 
   const [login, setLogin] = useState(()=>{
-    const token = localStorage.getItem('login');
+    const token = localStorage.getItem('accessToken');
     return token;
   })
 
   return (
     <div className="h-100">
-      {login === 'true' ? <BlogPage/> : <LoginPage setLogin = {setLogin}/> }
+      {login === null ? <LoginPage setLogin = {setLogin}/> : <BlogPage setLogin = {setLogin}/> }
         
     </div>
   );

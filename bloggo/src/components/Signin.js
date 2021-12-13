@@ -31,12 +31,9 @@ export default class Signin extends Component {
             else {
                 var hpassword = bcrypt.hashSync(password, res.data.data.salt);
                 if (hpassword === res.data.data.password) {
-                    localStorage.setItem('accessToken', res.config.data.accessToken);
-                    if (localStorage.getItem('login') === 'true')
-                        localStorage.setItem('login', 'false');
-                    else
-                        localStorage.setItem('login', 'true');
-                    this.props.setLogin(localStorage.getItem('login'));
+                    localStorage.setItem('accessToken', res.data.accessToken);
+                    localStorage.setItem("user", this.state.email);
+                    this.props.setLogin(localStorage.getItem('accessToken'));
                 }
                 else {
                     alert("Your password is incorrect")
