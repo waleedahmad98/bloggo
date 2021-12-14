@@ -19,5 +19,11 @@ router.get("/:email", async function (req, res) {
   res.send(stat);
 });
 
+router.delete("/delete/:id", async function(req, res){
+  let stat = await DBFunctions.deletePost(req.params["id"]);
+  console.log(stat);
+  res.send(stat);
+});
+
 
 module.exports = router;

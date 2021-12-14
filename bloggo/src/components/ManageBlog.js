@@ -25,7 +25,7 @@ export default function ManageBlog() {
                     <p class="card-text">{p.description}</p>
                     <p class="card-text">{p.author}</p>
                     <button className = "btn btn-primary">Edit</button>
-                    <button className = "btn btn-primary ms-2">Delete</button>
+                    <button className = "btn btn-primary ms-2" onClick={()=>{axios.delete(`http://127.0.0.1:8000/posts/delete/${p._id}`)}}>Delete</button>
                 </div>
             </div>))}
 

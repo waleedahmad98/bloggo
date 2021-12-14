@@ -1,4 +1,5 @@
 var postModel = require('../models/posts.model');
+var mongoose = require('mongoose');
 
 const createPost = async (title, desc, body, img, author) => {
     new postModel({
@@ -18,8 +19,12 @@ const getPosts = async () => {
 }
 
 const getUserPosts = async (email) => {
-    return await postModel.find({'email': `${email}`}, 'title description body image');
+    return await postModel.find({'author': `${email}`}, 'title description body image');
+}
+
+const deletePost = async (id) => {
+    return await postModel.deleteOne({_id: `${mongoose.Types.ObjectId(id)}`});
 }
 
 
-module.exports = {createPost, getPosts, getUserPosts};
+module.exports = {createPost, getPosts, getUserPosts, deletePost}; 
