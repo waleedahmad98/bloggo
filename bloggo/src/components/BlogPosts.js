@@ -10,11 +10,10 @@ export default function BlogPosts() {
     const [perPage] = useState(6);
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/findAll").then((res) => {
+        axios.get("http://127.0.0.1:8000/posts/findAll").then((res) => {
             var arr = [];
             for (let i = 0; i < res.data.length; i++) {
                 arr.push(res.data[i]);
-                arr[i].author = localStorage.getItem("user");
             }
 
             setPosts(arr);

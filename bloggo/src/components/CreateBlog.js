@@ -9,12 +9,12 @@ export default function CreateBlog(props) {
     const [summary, setSummary] = useState(null);
     const [text, setText] = useState(null);
     const [img, setImg] = useState(null);
-    const [author, setAuthor] = useState(null);
+    const author = localStorage.getItem("user");
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://127.0.0.1:8000/create", {title: title, desc: summary, body: text, img: img, author: author}).then((res) => {
+        axios.post("http://127.0.0.1:8000/posts/create", {title: title, desc: summary, body: text, img: img, author: author}).then((res) => {
             if (res.data.code === "-1") {
                 alert(res.data.status);
             }
@@ -52,7 +52,7 @@ export default function CreateBlog(props) {
                     </div>
                     <div class="mb-3">
                         <label for="author" class="form-label">Author</label>
-                        <input type="text" class="form-control" id="author" value={author} onChange={(e) => { setAuthor(e.target.value) }} />
+                        <input type="text" class="form-control" id="author" value={author} disabled/>
                     </div>
 
                     <button type="submit" class="btn btn-success">Create</button>

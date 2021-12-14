@@ -6,6 +6,10 @@ export default function BlogMenu(props) {
         props.allow(true);
         navigate("/create");
     }
+    const manageBlog = () => {
+        props.allow(true);
+        navigate("/manage");
+    }
 
     return (
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -13,7 +17,7 @@ export default function BlogMenu(props) {
                     <a class="navbar-brand" style = {{fontFamily:"open-s-bol"}} href="#">Bloggo</a>
 
                     <div class="d-flex">
-                        <button class="btn btn-outline-primary me-2" >Manage Blogs</button>
+                        <button class="btn btn-outline-primary me-2" onClick={manageBlog} >Manage Blogs</button>
                         <button class="btn btn-outline-success me-2" onClick={createBlog}> Create Blog</button>
                         <button class="btn btn-outline-danger" onClick = {()=>{
                             localStorage.removeItem('accessToken');

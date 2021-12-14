@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import BlogMenu from './BlogMenu';
 import BlogPosts from './BlogPosts';
 import CreateBlog from './CreateBlog';
+import ManageBlog from './ManageBlog';
 
 export default class BlogPage extends Component {
     constructor(props){
@@ -26,6 +27,7 @@ export default class BlogPage extends Component {
                         <Route path="/login" element={<Navigate to="/" />}></Route>
                         <Route path="/register" element={<Navigate to="/" />}></Route>
                         <Route path = "/create" element={<CreateBlog allow = {this.state.allowCreate}/>}></Route>
+                        <Route path = "/manage" element={<ManageBlog />}></Route>
                         <Route path = "/" element = {<><BlogMenu setLogin = {this.props.setLogin} allow = {this.setAllow}/><BlogPosts/></>}></Route>
                     </Routes>
                 </Router>
