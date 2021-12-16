@@ -4,6 +4,8 @@ import BlogMenu from './BlogMenu';
 import BlogPosts from './BlogPosts';
 import CreateBlog from './CreateBlog';
 import ManageBlog from './ManageBlog';
+import EditBlog from "./EditBlog";
+import BlogDetails from "./BlogDetails";
 
 export default class BlogPage extends Component {
     constructor(props){
@@ -28,6 +30,8 @@ export default class BlogPage extends Component {
                         <Route path="/register" element={<Navigate to="/" />}></Route>
                         <Route path = "/create" element={<CreateBlog allow = {this.state.allowCreate}/>}></Route>
                         <Route path = "/manage" element={<ManageBlog />}></Route>
+                        <Route path = "/edit/:id" element={<EditBlog />}></Route>
+                        <Route path = "/blog/:id" element={<BlogDetails />}></Route>
                         <Route path = "/" element = {<><BlogMenu setLogin = {this.props.setLogin} allow = {this.setAllow}/><BlogPosts/></>}></Route>
                     </Routes>
                 </Router>

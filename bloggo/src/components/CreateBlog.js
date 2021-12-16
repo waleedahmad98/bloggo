@@ -14,7 +14,19 @@ export default function CreateBlog(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://127.0.0.1:8000/posts/create", {title: title, desc: summary, body: text, img: img, author: author}).then((res) => {
+
+        let formData = new FormData();
+
+        formData.append('image', img);
+        formData.append('title', title);
+        formData.append('summary', summary);
+        formData.append('text', text);
+        formData.append('author', author);
+        axios.post("http://127.0.0.1:8000/posts/create", formData, {
+            headers: {
+            'Content-Type': 'multipart/form-data'
+            }
+        }).then((res) => {
             if (res.data.code === "-1") {
                 alert(res.data.status);
             }
@@ -33,13 +45,13 @@ export default function CreateBlog(props) {
     else {
         return (
             <div className='container'>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} >
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" id="title" value={title} onChange={(e) => { setTitle(e.target.value) }} />
                     </div>
                     <div class="mb-3">
-                        <label for="desc" class="form-label">Description</label>
+                        <label for="desc" class="for    m-label">Description</label>
                         <input type="text" class="form-control" id="desc" value={summary} onChange={(e) => { setSummary(e.target.value) }} />
                     </div>
                     <div class="mb-3">
@@ -47,8 +59,8 @@ export default function CreateBlog(props) {
                         <input type="text" class="form-control" id="body" value={text} onChange={(e) => { setText(e.target.value) }} />
                     </div>
                     <div class="mb-3">
-                        <label for="img" class="form-label">Image Link</label>
-                        <input type="text" class="form-control" id="img" value={img} onChange={(e) => { setImg(e.target.value) }} />
+                        <label for="img" class="form-label">Image</label><br/>
+                        <input type="file"  id="img" name="img" onChange={(e) => { setImg(e.target.files[0]) }} />
                     </div>
                     <div class="mb-3">
                         <label for="author" class="form-label">Author</label>
